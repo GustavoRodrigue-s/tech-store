@@ -1,17 +1,13 @@
-// import { useState } from 'react';
-
-import catalog from './components/assets/Catalog/catalog.json';
+import catalog from './assets/catalog/catalog.json';
 
 function App() {
-  // const [products, setProducts] = useState(catalog);
-
   return (
     <div className="App">
       { 
         catalog.map(({ name, image, id }) => (
           <li key={id}>
             {name}
-            <img src={image} alt="Product" />
+            <img src={require(`./assets/images/${image}`)} alt={image} />
           </li>
         )) 
       }

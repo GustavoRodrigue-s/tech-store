@@ -8,7 +8,7 @@
     "units": 13,
     "parcels": 8,
     "department": "Consoles",
-    "image": "images/product-1.png"
+    "image": "product-1.png"
   },
   {
     "id": 2, 
@@ -19,7 +19,7 @@
     "units": 27,
     "parcels": 3,
     "department": "Controles",
-    "image": "images/product-2.png"
+    "image": "product-2.png"
   },
   {
     "id": 3, 
@@ -30,7 +30,7 @@
     "units": 7,
     "parcels": 8,
     "department": "Consoles",
-    "image": "images/product-3.png"
+    "image": "product-3.png"
   },
   {
     "id": 4, 
@@ -41,7 +41,7 @@
     "units": 36,
     "parcels": 1,
     "department": "Controles",
-    "image": "images/product-4.png"
+    "image": "product-4.png"
   },
   {
     "id": 5, 
@@ -52,7 +52,7 @@
     "units": 18,
     "parcels": 8,
     "department": "Consoles",
-    "image": "images/product-5.png"
+    "image": "product-5.png"
   },
   {
     "id": 6, 
@@ -63,7 +63,7 @@
     "units": 5,
     "parcels": 1,
     "department": "Notebooks",
-    "image": "images/product-6.png"
+    "image": "product-6.png"
   },
   {
     "id": 7, 
@@ -74,7 +74,7 @@
     "units": 12,
     "parcels": 1,
     "department": "Notebooks",
-    "image": "images/product-7.png"
+    "image": "product-7.png"
   },
   {
     "id": 8, 
@@ -85,7 +85,7 @@
     "units": 24,
     "parcels": 1,
     "department": "Notebooks",
-    "image": "images/product-8.png"
+    "image": "product-8.png"
   },
   {
     "id": 9, 
@@ -96,7 +96,7 @@
     "units": 10,
     "parcels": 1,
     "department": "Monitores",
-    "image": "images/product-9.png"
+    "image": "product-9.png"
   },
   {
     "id": 10, 
@@ -107,7 +107,7 @@
     "units": 38,
     "parcels": 8,
     "department": "Monitores",
-    "image": "images/product-10.png"
+    "image": "product-10.png"
   },
   {
     "id": 11, 
@@ -118,7 +118,7 @@
     "units": 78,
     "parcels": 8,
     "department": "Monitores",
-    "image": "images/product-11.png"
+    "image": "product-11.png"
   },
   {
     "id": 12, 
@@ -129,7 +129,7 @@
     "units": 204,
     "parcels": 4,
     "department": "Monitores",
-    "image": "images/product-12.png"
+    "image": "product-12.png"
   },
   {
     "id": 13, 
@@ -140,7 +140,7 @@
     "units": 2,
     "parcels": 8,
     "department": "Televisões",
-    "image": "images/product-13.png"
+    "image": "product-13.png"
   },
   {
     "id": 14, 
@@ -151,7 +151,7 @@
     "units": 9,
     "parcels": 8,
     "department": "Televisões",
-    "image": "images/product-14.png"
+    "image": "product-14.png"
   },
   {
     "id": 15, 
@@ -162,7 +162,7 @@
     "units": 325,
     "parcels": 3,
     "department": "Teclados",
-    "image": "images/product-15.png"
+    "image": "product-15.png"
   },
   {
     "id": 16, 
@@ -173,7 +173,7 @@
     "units": 103,
     "parcels": 1,
     "department": "Teclados",
-    "image": "images/product-16.png"
+    "image": "product-16.png"
   },
   {
     "id": 17, 
@@ -184,7 +184,7 @@
     "units": 237,
     "parcels": 1,
     "department": "Mouses",
-    "image": "images/product-17.png"
+    "image": "product-17.png"
   },
   {
     "id": 18, 
@@ -195,7 +195,7 @@
     "units": 174,
     "parcels": 2,
     "department": "Mouses",
-    "image": "images/product-18.png"
+    "image": "product-18.png"
   },
   {
     "id": 19, 
@@ -206,7 +206,7 @@
     "units": 69,
     "parcels": 2,
     "department": "Fones de ouvido",
-    "image": "images/product-19.png"
+    "image": "product-19.png"
   },
   {
     "id": 20, 
@@ -217,6 +217,6 @@
     "units": 21,
     "parcels": 7,
     "department": "Fones de ouvido",
-    "image": "images/product-20.png"
+    "image": "product-20.png"
   }
 ]
