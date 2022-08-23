@@ -1,9 +1,7 @@
-import catalog from '../../assets/catalog/catalog.json';
+import Header from '../../components/Header';
 
 export default function Home() {
-  console.log(catalog);
-
   return (
-    <h1>Hello Home!</h1>
+    <Header />
   )
 }

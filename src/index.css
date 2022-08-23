@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +7,12 @@
 }
 
 :root {
-  --primaryColor: #FF5151 
+  --primaryColor: #FF5151;
+  --fontPrimary: 'Open Sans', sans-serif;
+  --fontLogo: 'Ubuntu', sans-serif;
+  --fontColorGray: #787878;
+  --techStoreLogoPrimaryColor: #363636;
+  --homeBackgroundColor: #FAFAFA;
 }
 
 html {
@@ -14,6 +21,13 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: var(--fontPrimary);
+  background-color: var(--homeBackgroundColor);
+}
+
+body, html {
+  overflow: hidden;
+  min-height: 100vh;
 }
 
 ul {
