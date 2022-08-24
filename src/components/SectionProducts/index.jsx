@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import OrderProductsBy from "../OrderProductsBy";
-import Product from "../Product";
+import ListProducts from "../ListProducts";
 
 function SectionProducts({ products }) {
   const [listOrder, setListOrder] = useState('Nome A-Z');
@@ -19,11 +19,7 @@ function SectionProducts({ products }) {
         </div>
       </div>
       <div>
-        <ul className="list-products">
-          {
-            products.map(({ id, ...props }) => <Product key={id} {...props} />)
-          }
-        </ul>
+        <ListProducts products={products} />
       </div>
     </>
   )

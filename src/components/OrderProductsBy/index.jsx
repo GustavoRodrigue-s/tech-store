@@ -1,3 +1,5 @@
+import "./style.css";
+
 function OrderProductsBy({ listOrder, setListOrder }) {
   const options = [
     'Nome A-Z',

@@ -8,10 +8,3 @@ main {
 main > aside {
   flex: 1 0 300px;
 }
-
-.list-products {
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: repeat(4, 250px);
-  gap: 20px;
-}

@@ -1,3 +1,10 @@
+.list-products {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+  gap: 20px;
+}
+
 .product {
   height: 350px;
   background-color: #fff;

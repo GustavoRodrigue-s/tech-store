@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import FormSearchBar from './FormSearchBar';
-
 import { Link } from 'react-router-dom';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
+
+import FormSearchBar from './FormSearchBar';
 
 import './style.css';
 
