@@ -1,0 +1,22 @@
+main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main header h1, .form-order > select {
+  height: 40px;
+}
+
+.form-order > label {
+  font: 500 1.6rem var(--fontPrimary);
+  margin-right: 15px;
+}
+
+.form-order > select {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0 5px;
+  font: 800 1.6rem var(--fontPrimary);
+}

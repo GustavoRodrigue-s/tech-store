@@ -8,16 +8,14 @@ function SectionProducts({ products }) {
 
   return (
     <>
-      <div>
+      <header>
         <div>
-          <div>
-            <h1>Buscar por: "Todos os produtos"</h1>
-          </div>
-          <div>
-            <OrderProductsBy listOrder={listOrder} setListOrder={setListOrder} />
-          </div>
+          <h1>Buscar por: "Todos os produtos"</h1>
         </div>
-      </div>
+        <div>
+          <OrderProductsBy listOrder={listOrder} setListOrder={setListOrder} />
+        </div>
+      </header>
       <div>
         <ListProducts products={products} />
       </div>

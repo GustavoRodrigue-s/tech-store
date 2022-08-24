@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
 
-header {
+header.page-header {
   height: 100px;
   background-color: #fff;
   padding: 0 50px;
@@ -9,19 +9,19 @@ header {
   justify-content: space-between;
 }
 
-header a {
+header.page-header a {
   text-decoration: none;
 }
 
 /* ---------- Logo ---------- */
 
-header > div, header .tech-store-logo {
+header.page-header > div, header .tech-store-logo {
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-header .tech-store-logo > h1 {
+header.page-header .tech-store-logo > h1 {
   justify-content: center;
   cursor: pointer;
   font-size: 3.6rem;
@@ -29,11 +29,11 @@ header .tech-store-logo > h1 {
   color: var(--techStoreLogoPrimaryColor);
 }
 
-header .tech-store-logo span {
+header.page-header .tech-store-logo span {
   color: var(--primaryColor);
 }
 
-header .container-tools {
+header.page-header .container-tools {
   gap: 40px;
 }
 

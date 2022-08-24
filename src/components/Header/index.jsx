@@ -32,7 +32,7 @@ function Cart() {
 
 export default function Header() {
   return (
-    <header>
+    <header className="page-header">
       <div>
         <Logo />
       </div>

@@ -14,15 +14,17 @@ function OrderProductsBy({ listOrder, setListOrder }) {
   }
 
   return (
-    <form>
-      <label>
-        Ordenar por
-        <select value={listOrder} onChange={handleSelectOption}>
-          {
-            options.map((option, i) => <option key={i} value={option}>{option}</option>)
-          }
-        </select>
-      </label>
+    <form className="form-order">
+      <label htmlFor="select-order-by">Ordenar por</label>
+      <select 
+        value={listOrder} 
+        onChange={handleSelectOption} 
+        id="select-order-by"
+      >
+        {
+          options.map((option, i) => <option key={i} value={option}>{option}</option>)
+        }
+      </select>
     </form>
   )
 }
