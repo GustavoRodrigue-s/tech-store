@@ -11,7 +11,7 @@ function Product({ name, units, image, rating, price }) {
       <div className="container-name">
         <span>{name}</span>
       </div>
-      <div class="container-units">
+      <div className="container-units">
         <small>{units} unidades restantes</small>
       </div>
       <div className="container-rating">

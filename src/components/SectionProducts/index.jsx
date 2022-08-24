@@ -1,7 +1,11 @@
+import { useState } from 'react';
+
 import OrderProductsBy from "../OrderProductsBy";
 import Product from "../Product";
 
 function SectionProducts({ products }) {
+  const [listOrder, setListOrder] = useState('Nome A-Z');
+
   return (
     <>
       <div>
@@ -10,7 +14,7 @@ function SectionProducts({ products }) {
             <h1>Buscar por: "Todos os produtos"</h1>
           </div>
           <div>
-            <OrderProductsBy />
+            <OrderProductsBy listOrder={listOrder} setListOrder={setListOrder} />
           </div>
         </div>
       </div>
