@@ -8,6 +8,8 @@
 
 :root {
   --primaryColor: #FF5151;
+  --filledStarColor: #FFBA07;
+  --unfilledStarColor: #D9D9D9;
   --fontPrimary: 'Open Sans', sans-serif;
   --fontLogo: 'Ubuntu', sans-serif;
   --fontColorGray: #787878;
@@ -26,7 +28,6 @@ body {
 }
 
 body, html {
-  overflow: hidden;
   min-height: 100vh;
 }
 

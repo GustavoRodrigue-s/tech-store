@@ -1,0 +1,51 @@
+.product {
+  height: 350px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+/* ---------- Image ---------- */
+
+.product .container-image {
+  width: 180px;
+  margin: 0 auto;
+}
+
+.product img {
+  width: 100%;
+}
+
+/* ---------- Name ---------- */
+
+.product .container-name {
+  height: 45px;
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  font: 600 1.6rem var(--fontPrimary);
+}
+
+/* ---------- Units ---------- */
+
+.product .container-units {
+  font: 500 1.6rem var(--fontPrimary);
+  color: var(--fontColorGray);
+}
+
+/* ---------- Rating ---------- */
+
+.product .container-rating {
+  margin-top: 5px;
+}
+
+/* ---------- Price ---------- */
+
+.product .container-price {
+  font: 600 1.8rem var(--fontPrimary);
+}

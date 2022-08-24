@@ -1,6 +1,20 @@
+// import useCatalog from '../../store/hooks/useCatalog';
+
 function FilterBar() {
+  // const catagories = useCatalog().map();
+
   return (
-    <span>Teste</span>
+    <>
+      <h2>Filtrar por</h2>
+      <details>
+        <summary>
+          Catagorias
+        </summary>
+        <ul>
+
+        </ul>
+      </details>
+    </>
   )
 }
 

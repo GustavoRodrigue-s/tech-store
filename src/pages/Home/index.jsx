@@ -1,8 +1,21 @@
+import useCatalog from '../../store/hooks/useCatalog';
+
 import Header from '../../components/Header';
 import FilterBar from '../../components/FilterBar';
-import ListProducts from '../../components/ListProducts';
+import Product from '../../components/Product';
+
+import "./style.css";
 
 export default function Home() {
+  const products = useCatalog();
+
+  const returnFilteredProducts = () => {
+    // todos os filtros do filter bar
+    return products
+  } 
+
+  const productsToDisplay = returnFilteredProducts();
+
   return (
     <>
       <Header />
@@ -22,7 +35,11 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <ListProducts />
+            <ul className="list-products">
+              {
+                productsToDisplay.map(({ id, ...props }) => <Product key={id} {...props} />)
+              }
+            </ul>
           </div>
         </section>
       </main>

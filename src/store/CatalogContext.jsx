@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import catalog from '../assets/catalog/catalog.json';
+import catalog from '../assets/catalog.json';
 
 const CatalogContext = createContext();
 
