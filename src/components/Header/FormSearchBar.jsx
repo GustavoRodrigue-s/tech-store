@@ -1,10 +1,10 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi'
 
-import CatalogContext from '../../store';
+import useCatalog from '../../store/hooks/useCatalog';
 
 export default function FormSearchBar() {
-  const catalog = useContext(CatalogContext);
+  const catalog = useCatalog();
   const [inputValue, setInputValue] = useState('');
 
   console.log(catalog);

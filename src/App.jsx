@@ -1,15 +1,13 @@
-import CatalogContext from './store';
+import { CatalogProvider } from './store/CatalogContext';
 
 import RoutesApp from './routes';
 
 import './index.css';
 
-import catalog from './assets/catalog/catalog.json';
-
 export default function App() {
   return (
-    <CatalogContext.Provider value={catalog}>
+    <CatalogProvider>
       <RoutesApp />
-    </CatalogContext.Provider>
+    </CatalogProvider>
   );
 }
