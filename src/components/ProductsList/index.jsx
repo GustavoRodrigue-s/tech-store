@@ -1,3 +1,5 @@
+import { MdFavoriteBorder } from 'react-icons/md';
+
 import StarRatingList from '../StarRatingList';
 
 import "./style.css";
@@ -13,21 +15,26 @@ function ListProducts({ products }) {
 
           return (
             <li key={id} className="product">
-              <div className="container-image">
-                <img src={require(`../../assets/images/${image}`)} alt={`Produto: ${name}`} />
+              <div className="favorite">
+                <button>
+                  <MdFavoriteBorder size={35} color="#C1C1C1" />
+                </button>
               </div>
-              <div className="container-name">
+              <div className="image">
+                <img src={ require(`../../assets/images/${image}`) } alt={`Produto: ${name}`} />
+              </div>
+              <div className="name">
                 <span>{name}</span>
               </div>
-              <div className="container-units">
+              <div className="units">
                 <small>{units} unidades restantes</small>
               </div>
-              <div className="container-rating">
+              <div className="rating">
                 {
                   <StarRatingList stars={stars} />
                 }
               </div>
-              <div className="container-price">
+              <div className="price">
                 {
                   discount && (
                     <div className="price-with-discount">
@@ -44,6 +51,11 @@ function ListProducts({ products }) {
                     }
                   </span>
                 </div>
+              </div>
+              <div className="add-button">
+                <button>
+                  Adicionar Produto
+                </button>
               </div>
             </li>
           )

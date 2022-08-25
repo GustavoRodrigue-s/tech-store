@@ -6,6 +6,7 @@
 }
 
 .product {
+  position: relative;
   height: 350px;
   background-color: #fff;
   border-radius: 10px;
@@ -13,9 +14,22 @@
   padding: 10px;
 }
 
+/* ---------- Favorite ---------- */
+
+.product .favorite {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.product .favorite > button {
+  background-color: transparent;
+}
+
 /* ---------- Image ---------- */
 
-.product .container-image {
+.product .image {
   width: 170px;
   margin: 0 auto;
 }
@@ -26,7 +40,7 @@
 
 /* ---------- Name ---------- */
 
-.product .container-name {
+.product .name {
   height: 45px;
   margin-top: 5px;
   overflow: hidden;
@@ -40,14 +54,14 @@
 
 /* ---------- Units ---------- */
 
-.product .container-units {
+.product .units {
   font: 500 1.6rem var(--fontPrimary);
   color: var(--fontColorGray);
 }
 
 /* ---------- Rating ---------- */
 
-.product .container-rating {
+.product .rating {
   margin: 5px 0;
   display: flex;
   align-items: center;
@@ -55,7 +69,7 @@
 
 /* ---------- Price ---------- */
 
-.product .container-price {
+.product .price {
   font: 600 1.8rem var(--fontPrimary);
 }
 
@@ -66,4 +80,33 @@
 
 .price-with-discount > span {
   color: var(--discountColor);
+}
+
+/* ---------- Button ---------- */
+
+.product .add-button > button {
+  display: none;
+  width: 100%;
+  height: 40px;
+  margin-top: 15px;
+  color: #fff;
+  font: 500 1.4rem var(--fontPrimary); 
+  background-color: var(--primaryColor);
+  border-radius: 3px;
+}
+
+/* -------- Hover State ---------- */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.product:hover .price {
+  display: none;
+}
+
+.product:hover :is(.add-button > button, .favorite) {
+  display: block;
+  animation: fadeIn 0.3s forwards;
 }
