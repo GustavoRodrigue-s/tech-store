@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import OrderProductsBy from "../OrderProductsBy";
-import ListProducts from "../ProductsList";
+import ListProducts from "../ListProducts";
 
 function SectionProducts({ products }) {
   const [listOrder, setListOrder] = useState('Nome A-Z');
