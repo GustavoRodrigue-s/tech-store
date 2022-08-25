@@ -1,6 +1,7 @@
 import { MdExpandMore } from 'react-icons/md';
 
 import useFilter from  '../../hooks/useFilter';
+import StarRatingList from '../StarRatingList';
 
 import "./style.css";
 
@@ -28,17 +29,19 @@ function FilterBar({ products }) {
                 </summary>
                 <ul>
                   {
-                    options.map(({ name, products }, i) => (
+                    options.map((option, i) => (
                       <li key={i}>
                         <label>
                           <div>
                             <input type="checkbox" />
                             {
-                              name
+                              name !== "Avaliação"
+                                ? option.name
+                                : <StarRatingList stars={option.name} />
                             }
                           </div>
                           <div>
-                            ({products.length})
+                            ({option.products.length})
                           </div>
                         </label>
                       </li>

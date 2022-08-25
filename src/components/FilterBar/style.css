@@ -25,6 +25,11 @@ aside .filter-list ul > li input {
   margin-right: 10px;
 }
 
+aside .filter-list ul label > div:first-child {
+  display: flex;
+  align-items: center;
+}
+
 aside .filter-list ul {
   margin: 10px 0 20px 0;
   display: flex;

@@ -44,19 +44,21 @@ function useFilter(products) {
     }
   ]
 
-  const stars = [
+  const filledOrUnfilledStars = [
     [false, false, false ,false, false],
     [true, false, false ,false, false],
     [true, true, false ,false, false],
     [true, true, true ,false, false],
     [true, true, true ,true, false],
     [true, true, true ,true, true]
-  ].map((item, i) => {
-    return { 
+  ]
+
+  const stars = filledOrUnfilledStars.map(item => (
+    { 
       name: item,
-      products: products.filter(({ stars }) => stars === item)
+      products: products.filter(({ stars }) => stars.every((star, i) => star === item[i]))
     }
-  })
+  ));
 
   return { departments, prices, discounts, stars }
 }
