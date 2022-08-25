@@ -44,10 +44,17 @@ function useFilter(products) {
     }
   ]
 
-  const stars = ["star", "star", "star", "star", "star", "star"].map((item, i) => {
+  const stars = [
+    [false, false, false ,false, false],
+    [true, false, false ,false, false],
+    [true, true, false ,false, false],
+    [true, true, true ,false, false],
+    [true, true, true ,true, false],
+    [true, true, true ,true, true]
+  ].map((item, i) => {
     return { 
       name: item,
-      products: products.filter(({ stars }) => stars.filter(isStarFilled => isStarFilled).length === i)
+      products: products.filter(({ stars }) => stars === item)
     }
   })
 

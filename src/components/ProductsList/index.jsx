@@ -1,4 +1,4 @@
-import { HiStar } from 'react-icons/hi'
+import StarRatingList from '../StarRatingList';
 
 import "./style.css";
 
@@ -19,13 +19,7 @@ function ListProducts({ products }) {
             </div>
             <div className="container-rating">
               {
-                stars.map((isFilledStar, i) => 
-                  <HiStar 
-                    key={i} 
-                    size={20} 
-                    color={isFilledStar ? "var(--filledStarColor)" : "var(--unfilledStarColor)"} 
-                  />
-                )
+                <StarRatingList stars={stars} />
               }
             </div>
             <div className="container-price">

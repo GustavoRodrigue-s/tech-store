@@ -1,5 +1,4 @@
 import { MdExpandMore } from 'react-icons/md';
-import { HiStar } from 'react-icons/hi'
 
 import useFilter from  '../../hooks/useFilter';
 
@@ -35,18 +34,7 @@ function FilterBar({ products }) {
                           <div>
                             <input type="checkbox" />
                             {
-                              name !== "star"
-                                ? name
-                                : options.map((isFilledStar, i) => {
-                                  console.log(isFilledStar);
-                                  return <HiStar 
-                                      key={i} 
-                                      size={20} 
-                                      color={isFilledStar ? "var(--filledStarColor)" : "var(--unfilledStarColor)"} 
-                                    />
-                                  
-                                }
-                              )
+                              name
                             }
                           </div>
                           <div>
