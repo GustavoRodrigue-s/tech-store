@@ -1,20 +1,22 @@
 function useFilter(products) {
-  const departments = products.reduce((acc, { department }) => {
-    const itemAlreadyAdded = acc.find(({ label }) => department === label);
+  const departments = [
+    "Consoles",
+    "Controles",
+    "Notebooks",
+    "Monitores",
+    "Televisões",
+    "Teclados",
+    "Mouses",
+    "Fones de ouvido"
+  ];
 
-    if (itemAlreadyAdded) {
-      return acc
-    } 
+  const productsSortedByDepartments = departments.map(label => {
+    const filteredProducts = products.filter(({ department }) => department === label);
 
-    acc.push({ 
-      label: department, 
-      products: products.filter(product => product.department === department)
-    });
+    return { label, products: filteredProducts }
+  });
 
-    return acc
-  }, []);
-
-  const prices = [
+  const productsSortedByPrices = [
     {
       label: "Até R$ 100,00",
       products: products.filter(({ price }) => price <= 100)
@@ -33,7 +35,7 @@ function useFilter(products) {
     }
   ];
 
-  const discounts = [
+  const productsSortedByDiscounts = [
     {
       label: "Sem desconto", 
       products: products.filter(({ discount }) => discount === null)
@@ -44,22 +46,26 @@ function useFilter(products) {
     }
   ]
 
-  const filledOrUnfilledStars = [
+  const stars = [
     [true, true, true ,true, true],
     [true, true, true ,true, false],
     [true, true, true ,false, false],
     [true, true, false ,false, false],
     [true, false, false ,false, false]
-  ]
+  ];
 
-  const stars = filledOrUnfilledStars.map(item => (
-    { 
-      label: item,
-      products: products.filter(({ stars }) => stars.every((star, i) => star === item[i]))
-    }
-  ));
+  const productsSortedByStars = stars.map(item => {
+    const filteredProducts = products.filter(({ stars }) => stars.every((star, i) => star === item[i]));
 
-  return { departments, prices, discounts, stars }
+    return { label: item, products: filteredProducts };
+  });
+
+  return { 
+    productsSortedByDepartments, 
+    productsSortedByPrices, 
+    productsSortedByDiscounts, 
+    productsSortedByStars 
+  }
 }
 
 export default useFilter;

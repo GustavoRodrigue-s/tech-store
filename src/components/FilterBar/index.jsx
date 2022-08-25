@@ -5,14 +5,19 @@ import FilterOptionsList from './FilterOptionsList';
 
 import "./style.css";
 
-function FilterBar({ products }) {
-  const { departments, prices, discounts, stars } = useFilter(products);
+function FilterBar({ products, setFilterOptions }) {
+  const { 
+    productsSortedByDepartments, 
+    productsSortedByPrices, 
+    productsSortedByDiscounts, 
+    productsSortedByStars 
+  } = useFilter(products);
 
   const filters = [
-    { name: "Categorias", options: departments },
-    { name: "Preço", options: prices },
-    { name: "Descontos", options: discounts },
-    { name: "Avaliação", options: stars }
+    { name: "Categorias", options: productsSortedByDepartments },
+    { name: "Preço", options: productsSortedByPrices },
+    { name: "Descontos", options: productsSortedByDiscounts },
+    { name: "Avaliação", options: productsSortedByStars }
   ]
 
   return (
@@ -28,7 +33,11 @@ function FilterBar({ products }) {
                   <MdExpandMore size={25} />
                 </summary>
                 { 
-                  <FilterOptionsList category={name} options={options} />
+                  <FilterOptionsList 
+                    category={name} 
+                    options={options} 
+                    setFilterOptions={setFilterOptions} 
+                  />
                 }
               </details>
             </li>
