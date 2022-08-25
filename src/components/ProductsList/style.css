@@ -16,7 +16,7 @@
 /* ---------- Image ---------- */
 
 .product .container-image {
-  width: 180px;
+  width: 170px;
   margin: 0 auto;
 }
 
@@ -48,11 +48,22 @@
 /* ---------- Rating ---------- */
 
 .product .container-rating {
-  margin-top: 5px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
 }
 
 /* ---------- Price ---------- */
 
 .product .container-price {
   font: 600 1.8rem var(--fontPrimary);
+}
+
+.price-with-discount {
+  font-size: 1.2rem;
+  color: var(--fontColorGray);
+}
+
+.price-with-discount > span {
+  color: var(--discountColor);
 }
