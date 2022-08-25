@@ -1,13 +1,13 @@
 function useFilter(products) {
   const departments = products.reduce((acc, { department }) => {
-    const itemAlreadyAdded = acc.find(({ name }) => department === name);
+    const itemAlreadyAdded = acc.find(({ label }) => department === label);
 
     if (itemAlreadyAdded) {
       return acc
     } 
 
     acc.push({ 
-      name: department, 
+      label: department, 
       products: products.filter(product => product.department === department)
     });
 
@@ -16,30 +16,30 @@ function useFilter(products) {
 
   const prices = [
     {
-      name: "Até R$ 100,00",
+      label: "Até R$ 100,00",
       products: products.filter(({ price }) => price <= 100)
     },
     {
-      name: "De R$ 250,00 até R$ 500,00",
+      label: "De R$ 250,00 até R$ 500,00",
       products: products.filter(({ price }) => price > 100 && price <= 500)
     },
     {
-      name: "De R$ 500,00 até R$ 1000,00",
+      label: "De R$ 500,00 até R$ 1000,00",
       products: products.filter(({ price }) => price > 500 && price <= 1000)
     },
     {
-      name: "Mais de R$ 1000,00",
+      label: "Mais de R$ 1000,00",
       products: products.filter(({ price }) => price > 1000)
     }
   ];
 
   const discounts = [
     {
-      name: "Sem desconto", 
+      label: "Sem desconto", 
       products: products.filter(({ discount }) => discount === null)
     },
     {
-      name: "Com desconto", 
+      label: "Com desconto", 
       products: products.filter(({ discount }) => discount !== null)
     }
   ]
@@ -54,7 +54,7 @@ function useFilter(products) {
 
   const stars = filledOrUnfilledStars.map(item => (
     { 
-      name: item,
+      label: item,
       products: products.filter(({ stars }) => stars.every((star, i) => star === item[i]))
     }
   ));
