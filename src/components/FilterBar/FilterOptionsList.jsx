@@ -1,17 +1,17 @@
 import StarRatingList from '../StarRatingList';
 
-function FilterOptionsList({ category, options, setFilterOptions }) {
-  const handleChange = e => {
-    const currentValue = e.target.value;
+function FilterOptionsList({ category, options }) {
+  // const handleChange = e => {
+  //   const currentValue = e.target.value;
     
-    if (e.target.checked) {
-      setFilterOptions(prevOptions => [...prevOptions, currentValue]);
-    } else {
-      setFilterOptions(prevOptions => 
-        prevOptions.filter(option => option !== currentValue)
-      );
-    }
-  }
+  //   if (e.target.checked) {
+  //     setFilterOptions(prevOptions => [...prevOptions, currentValue]);
+  //   } else {
+  //     setFilterOptions(prevOptions => 
+  //       prevOptions.filter(option => option !== currentValue)
+  //     );
+  //   }
+  // }
 
   return (
     <ul>
@@ -24,7 +24,6 @@ function FilterOptionsList({ category, options, setFilterOptions }) {
                 <input 
                   type="checkbox" 
                   value={label}
-                  onChange={handleChange}
                 />
 
                 {

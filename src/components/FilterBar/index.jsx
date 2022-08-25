@@ -1,24 +1,25 @@
+import { useContext } from 'react';
 import { MdExpandMore } from 'react-icons/md';
 
-import useFilter from  '../../hooks/useFilter';
+import { FilterContext } from '../../store/FilterContext';
 import FilterOptionsList from './FilterOptionsList';
 
 import "./style.css";
 
-function FilterBar({ products, setFilterOptions }) {
+function FilterBar() {
   const { 
     productsSortedByDepartments, 
     productsSortedByPrices, 
     productsSortedByDiscounts, 
     productsSortedByStars 
-  } = useFilter(products);
+  } = useContext(FilterContext);
 
   const filters = [
     { name: "Categorias", options: productsSortedByDepartments },
     { name: "Preço", options: productsSortedByPrices },
     { name: "Descontos", options: productsSortedByDiscounts },
     { name: "Avaliação", options: productsSortedByStars }
-  ]
+  ];
 
   return (
     <>
@@ -33,11 +34,7 @@ function FilterBar({ products, setFilterOptions }) {
                   <MdExpandMore size={25} />
                 </summary>
                 { 
-                  <FilterOptionsList 
-                    category={name} 
-                    options={options} 
-                    setFilterOptions={setFilterOptions} 
-                  />
+                  <FilterOptionsList category={name} options={options} />
                 }
               </details>
             </li>
