@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { CatalogContext } from '../CatalogContext';
+import { CatalogContext } from '../store/CatalogContext';
 
 function useCatalog() {
   return useContext(CatalogContext);

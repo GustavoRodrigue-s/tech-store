@@ -6,7 +6,7 @@ function ListProducts({ products }) {
   return (
     <ul className="list-products">
       {
-        products.map(({ id, name, image, units, rating, price }) => (
+        products.map(({ id, name, image, units, stars, price }) => (
           <li key={id} className="product">
             <div className="container-image">
               <img src={require(`../../assets/images/${image}`)} alt={`Produto: ${name}`} />
@@ -19,9 +19,12 @@ function ListProducts({ products }) {
             </div>
             <div className="container-rating">
               {
-                rating.map((startType, i) => startType === "filled star" 
-                  ? <HiStar key={i} size={20} color="var(--filledStarColor)" /> 
-                  : <HiStar key={i} size={20} color="var(--unfilledStarColor)" />
+                stars.map((isFilledStar, i) => 
+                  <HiStar 
+                    key={i} 
+                    size={20} 
+                    color={isFilledStar ? "var(--filledStarColor)" : "var(--unfilledStarColor)"} 
+                  />
                 )
               }
             </div>

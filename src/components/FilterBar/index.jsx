@@ -1,19 +1,67 @@
-// import useCatalog from '../../store/hooks/useCatalog';
+import { MdExpandMore } from 'react-icons/md';
+import { HiStar } from 'react-icons/hi'
 
-function FilterBar() {
-  // const catagories = useCatalog().map();
+import useFilter from  '../../hooks/useFilter';
+
+import "./style.css";
+
+function FilterBar({ products }) {
+  const { departments, prices, discounts, stars } = useFilter(products);
+
+  const filters = [
+    { name: "Categorias", options: departments },
+    { name: "Preço", options: prices },
+    { name: "Descontos", options: discounts },
+    { name: "Avaliação", options: stars }
+  ]
 
   return (
     <>
       <h2>Filtrar por</h2>
-      <details>
-        <summary>
-          Catagorias
-        </summary>
-        <ul>
-
-        </ul>
-      </details>
+      <ul className="filter-list">
+        {
+          filters.map(({ name, options }, i) => (
+            <li key={i}>
+              <details>
+                <summary>
+                  {name}
+                  <MdExpandMore size={25} />
+                </summary>
+                <ul>
+                  {
+                    options.map(({ name, products }, i) => (
+                      <li key={i}>
+                        <label>
+                          <div>
+                            <input type="checkbox" />
+                            {
+                              name !== "star"
+                                ? name
+                                : options.map((isFilledStar, i) => {
+                                  console.log(isFilledStar);
+                                  return <HiStar 
+                                      key={i} 
+                                      size={20} 
+                                      color={isFilledStar ? "var(--filledStarColor)" : "var(--unfilledStarColor)"} 
+                                    />
+                                  
+                                }
+                              )
+                            }
+                          </div>
+                          <div>
+                            ({products.length})
+                          </div>
+                        </label>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </details>
+            </li>
+          ))
+        }
+      </ul>
     </>
   )
 }

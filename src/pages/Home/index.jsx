@@ -1,4 +1,4 @@
-import useCatalog from '../../store/hooks/useCatalog';
+import useCatalog from '../../hooks/useCatalog';
 
 import Header from '../../components/Header';
 import FilterBar from '../../components/FilterBar';
@@ -21,7 +21,7 @@ export default function Home() {
       <Header />
       <main>
         <aside>
-          <FilterBar />
+          <FilterBar products={products} />
         </aside>
         <section>
           <SectionProducts products={productsToDisplay} />

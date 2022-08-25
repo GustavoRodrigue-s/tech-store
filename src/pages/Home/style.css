@@ -1,10 +1,14 @@
 main {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1420px;
   margin: 80px auto;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 main > aside {
-  flex: 1 0 300px;
+  position: sticky;
+  top: 50px;
+  flex: 0 0 300px;
 }

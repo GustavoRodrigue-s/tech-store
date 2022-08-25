@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi'
 
-import useCatalog from '../../store/hooks/useCatalog';
+import useCatalog from '../../hooks/useCatalog';
 
 export default function FormSearchBar() {
   const catalog = useCatalog();
