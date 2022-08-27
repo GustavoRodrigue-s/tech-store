@@ -1,22 +1,19 @@
 import StarRatingList from '../StarRatingList';
 
-function FilterOptionsList({ category, options }) {
-  // const handleChange = e => {
-  //   const currentValue = e.target.value;
-    
-  //   if (e.target.checked) {
-  //     setFilterOptions(prevOptions => [...prevOptions, currentValue]);
-  //   } else {
-  //     setFilterOptions(prevOptions => 
-  //       prevOptions.filter(option => option !== currentValue)
-  //     );
-  //   }
-  // }
+function FilterOptionsList({ category, subFilters, setSelectedFilters }) {
+  const handleChange = e => {
+    const currentValue = e.target.value;
+    const isChecked = e.target.checked;
+
+    isChecked
+      ? setSelectedFilters(prevFilters => [...prevFilters, currentValue])
+      : setSelectedFilters(prevFilters => prevFilters.filter(filter => filter !== currentValue));
+  }
 
   return (
     <ul>
       {
-        options.map(({ label, products }, i) =>  (
+        subFilters.map(({ label, products }, i) =>  (
           <li key={i}>
             <label>
 
@@ -24,6 +21,8 @@ function FilterOptionsList({ category, options }) {
                 <input 
                   type="checkbox" 
                   value={label}
+                  cetegory={category}
+                  onChange={handleChange}
                 />
 
                 {
@@ -31,6 +30,7 @@ function FilterOptionsList({ category, options }) {
                     ? label
                     : <StarRatingList stars={label} />
                 }
+                
               </div>
               <div>
                 ({ products.length })

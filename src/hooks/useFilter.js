@@ -10,13 +10,13 @@ function useFilter(products) {
     "Fones de ouvido"
   ];
 
-  const productsSortedByDepartments = departments.map(label => {
+  const sortedByDepartments = departments.map(label => {
     const filteredProducts = products.filter(({ department }) => department === label);
 
     return { label, products: filteredProducts }
   });
 
-  const productsSortedByPrices = [
+  const sortedByPrices = [
     {
       label: "Até R$ 100,00",
       products: products.filter(({ price }) => price <= 100)
@@ -35,7 +35,7 @@ function useFilter(products) {
     }
   ];
 
-  const productsSortedByDiscounts = [
+  const sortedByDiscounts = [
     {
       label: "Sem desconto", 
       products: products.filter(({ discount }) => discount === null)
@@ -54,18 +54,33 @@ function useFilter(products) {
     [true, false, false ,false, false]
   ];
 
-  const productsSortedByStars = stars.map(item => {
+  const sortedByStars = stars.map(item => {
     const filteredProducts = products.filter(({ stars }) => stars.every((star, i) => star === item[i]));
 
     return { label: item, products: filteredProducts };
   });
 
-  return { 
-    productsSortedByDepartments, 
-    productsSortedByPrices, 
-    productsSortedByDiscounts, 
-    productsSortedByStars 
+  return {
+    sortedByDepartments,
+    sortedByPrices,
+    sortedByDiscounts,
+    sortedByStars
   }
+
+  /*
+    1 - Pricinpal função é filtrar todos os produtos através dos filtros
+    2 - Deve ser reutilizável
+    3 - Deve ser usuado uma vez só, quando o usuário pesquisar um produto, porque precisamos renderizar a quantidade de produtos de acordo com os filtros
+    4 - Ele filra todos os produtos de aondo com os filtros que possuem regras de negócio (Armazena todas as regras de negócio dos filtros)
+
+    {
+      sortedByDepartments: [
+        { label: "Consoles", products: [{}, {}, {}, {}] }
+        { label: "Notebooks", products: [{}, {}, {}, {}] }
+      ]
+    }
+
+  */ 
 }
 
 export default useFilter;

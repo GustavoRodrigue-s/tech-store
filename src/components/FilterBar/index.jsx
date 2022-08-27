@@ -7,26 +7,28 @@ import FilterOptionsList from './FilterOptionsList';
 import "./style.css";
 
 function FilterBar() {
-  const { 
-    productsSortedByDepartments, 
-    productsSortedByPrices, 
-    productsSortedByDiscounts, 
-    productsSortedByStars 
-  } = useContext(FilterContext);
+  const { filteredProducts, setSelectedFilters } = useContext(FilterContext);
+
+  const {
+    sortedByDepartments,
+    sortedByPrices,
+    sortedByDiscounts,
+    sortedByStars
+  } = filteredProducts;
 
   const filters = [
-    { name: "Categorias", options: productsSortedByDepartments },
-    { name: "Preço", options: productsSortedByPrices },
-    { name: "Descontos", options: productsSortedByDiscounts },
-    { name: "Avaliação", options: productsSortedByStars }
-  ];
+    { name: "Categorias", subFilters: sortedByDepartments },
+    { name: "Preço", subFilters: sortedByPrices },
+    { name: "Descontos", subFilters: sortedByDiscounts },
+    { name: "Avaliação", subFilters: sortedByStars }
+  ]
 
   return (
     <>
       <h2>Filtrar por</h2>
       <ul className="filter-list">
         {
-          filters.map(({ name, options }, i) => (
+          filters.map(({ name, subFilters }, i) => (
             <li key={i}>
               <details>
                 <summary>
@@ -34,7 +36,11 @@ function FilterBar() {
                   <MdExpandMore size={25} />
                 </summary>
                 { 
-                  <FilterOptionsList category={name} options={options} />
+                  <FilterOptionsList 
+                    category={name} 
+                    subFilters={subFilters}
+                    setSelectedFilters={setSelectedFilters}
+                  />
                 }
               </details>
             </li>

@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import useCatalog from '../../hooks/useCatalog';
 import useFilter from '../../hooks/useFilter';
 
@@ -10,17 +12,41 @@ import { FilterProvider } from '../../store/FilterContext';
 import "./style.css";
 
 export default function Home() {
-  // const [filterOptions, setFilterOptions] = useState([]);
+  const [products, setProducts] = useState(useCatalog());
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
-  // passar o produto pesquisado para este hook
-  const products = useCatalog();
   const filteredProducts = useFilter(products);
+
+  useEffect(() => {
+    if (!selectedFilters.length) {
+      return
+    }
+
+    const allProducts = [
+      ...filteredProducts.sortedByDepartments,
+      ...filteredProducts.sortedByDiscounts,
+      ...filteredProducts.sortedByPrices,
+      ...filteredProducts.sortedByStars
+    ];
+
+    const newFilteredProducts = selectedFilters.reduce((acc, filter) => {
+      const currentProducts = allProducts.find(({ label }) => label === filter)?.products;
+
+      if (currentProducts.length) {
+        acc = [...acc, ...currentProducts];
+      }
+
+      return acc
+    }, []);
+
+    setProducts(newFilteredProducts);
+  }, [products, selectedFilters]);
 
   return (
     <>
       <Header />
       <main>
-        <FilterProvider value={filteredProducts}>
+        <FilterProvider value={{ filteredProducts, setSelectedFilters }}>
           <aside>
             <FilterBar />
           </aside>
