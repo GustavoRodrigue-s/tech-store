@@ -48,54 +48,17 @@ export default function Home() {
 
     const currentProducts = currentFilter.reduce((acc, { products }) => acc = [...acc, ...products], []);
 
-    if (rating.length && !departments.length) {
-      const othersFilters = [...discount, ...price].reduce((acc, { products }) => 
-        acc = [...acc, ...products], []);
+    const othersProducts = [...rating, ...discount, ...price].reduce((acc, filter) =>
+      acc = [...acc, ...filter.products], []);
 
-      if (!othersFilters.length) {
-        return currentProducts;
-      }
+    console.log(othersProducts);
 
-      const commonProducts = currentProducts.filter(({ id }) => {
-        const isCommonProduct = othersFilters.filter(product => product.id === id);
-
-        return discount.length && price.length ? isCommonProduct.length === 2 : isCommonProduct.length === 1;
-      });
-
-      return commonProducts
-    }
-
-    if (discount.length && !departments.length) {
-      const othersFilters = price.reduce((acc, { products }) => 
-        acc = [...acc, ...products], []);
-
-      if (!othersFilters.length) {
-        return currentProducts;
-      }
-
-      const commonProducts = currentProducts.filter(({ id }) => 
-        othersFilters.find(product => product.id === id));
-
-      return commonProducts
-    }
-
-    if (price.length && !departments.length) {
-      return currentProducts
-    }
-
-    const othersFilters = [
-      ...rating,
-      ...discount,
-      ...price
-    ]
-    .reduce((acc, { products }) => acc = [...acc, ...products], []);
-
-    if (!othersFilters.length) {
+    if (!othersProducts.length) {
       return currentProducts;
     }
 
     const commonProducts = currentProducts.filter(({ id }) => {
-      const isCommonProduct = othersFilters.filter(product => product.id === id);
+      const isCommonProduct = othersProducts.filter(product => product.id === id);
 
       if (rating.length && discount.length && price.length) {
         return isCommonProduct.length === 3;
