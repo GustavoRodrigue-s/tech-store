@@ -7,7 +7,7 @@ import FilterOptionsList from './FilterOptionsList';
 import "./style.css";
 
 function FilterBar() {
-  const { filteredProducts, setSelectedFilters } = useContext(FilterContext);
+  const { filteredProducts, handleFilterChange } = useContext(FilterContext);
 
   const {
     sortedByDepartments,
@@ -17,10 +17,10 @@ function FilterBar() {
   } = filteredProducts;
 
   const filters = [
-    { name: "Categorias", subFilters: sortedByDepartments },
-    { name: "Preço", subFilters: sortedByPrices },
-    { name: "Descontos", subFilters: sortedByDiscounts },
-    { name: "Avaliação", subFilters: sortedByStars }
+    { name: "Categorias", filterCategory: "departments", subFilters: sortedByDepartments },
+    { name: "Preço", filterCategory: "price", subFilters: sortedByPrices },
+    { name: "Descontos", filterCategory: "discount", subFilters: sortedByDiscounts },
+    { name: "Avaliação", filterCategory: "rating", subFilters: sortedByStars }
   ]
 
   return (
@@ -28,7 +28,7 @@ function FilterBar() {
       <h2>Filtrar por</h2>
       <ul className="filter-list">
         {
-          filters.map(({ name, subFilters }, i) => (
+          filters.map(({ name, subFilters, filterCategory }, i) => (
             <li key={i}>
               <details>
                 <summary>
@@ -37,9 +37,10 @@ function FilterBar() {
                 </summary>
                 { 
                   <FilterOptionsList 
-                    category={name} 
+                    category={name}
+                    filterCategory={filterCategory}
                     subFilters={subFilters}
-                    setSelectedFilters={setSelectedFilters}
+                    handleFilterChange={handleFilterChange}
                   />
                 }
               </details>
