@@ -17,10 +17,10 @@ function FilterBar() {
   } = filteredProducts;
 
   const filters = [
-    { name: "Categorias", filterCategory: "departments", subFilters: sortedByDepartments },
-    { name: "Preço", filterCategory: "price", subFilters: sortedByPrices },
-    { name: "Descontos", filterCategory: "discount", subFilters: sortedByDiscounts },
-    { name: "Avaliação", filterCategory: "rating", subFilters: sortedByStars }
+    { name: "Categorias", filter: "departments", subFilters: sortedByDepartments },
+    { name: "Preço", filter: "price", subFilters: sortedByPrices },
+    { name: "Descontos", filter: "discount", subFilters: sortedByDiscounts },
+    { name: "Avaliação", filter: "rating", subFilters: sortedByStars }
   ]
 
   return (
@@ -28,7 +28,7 @@ function FilterBar() {
       <h2>Filtrar por</h2>
       <ul className="filter-list">
         {
-          filters.map(({ name, subFilters, filterCategory }, i) => (
+          filters.map(({ name, subFilters, filter }, i) => (
             <li key={i}>
               <details>
                 <summary>
@@ -38,7 +38,7 @@ function FilterBar() {
                 { 
                   <FilterOptionsList 
                     category={name}
-                    filterCategory={filterCategory}
+                    filter={filter}
                     subFilters={subFilters}
                     handleFilterChange={handleFilterChange}
                   />

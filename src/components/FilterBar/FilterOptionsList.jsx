@@ -1,11 +1,11 @@
 import StarRatingList from '../StarRatingList';
 
-function FilterOptionsList({ category, filterCategory, subFilters, handleFilterChange }) {
-  const handleChange = (e, products, filterCategory) => {
+function FilterOptionsList({ category, filter, subFilters, handleFilterChange }) {
+  const handleChange = (e, products) => {
     const label = e.target.value;
     const isChecked = e.target.checked;
 
-    handleFilterChange(isChecked, { label, products, filterCategory });
+    handleFilterChange(isChecked, label, products, filter);
   }
 
   return (
@@ -19,7 +19,7 @@ function FilterOptionsList({ category, filterCategory, subFilters, handleFilterC
                 <input 
                   type="checkbox" 
                   value={label}
-                  onChange={e => handleChange(e, products, filterCategory)}
+                  onChange={e => handleChange(e, products)}
                 />
 
                 {

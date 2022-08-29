@@ -1,25 +1,25 @@
 import { useState } from 'react';
 
 import FilterBar from '../../components/FilterBar';
-import SectionProducts from '../../components/SectionProducts';
+import SectionProducts from './SectionProducts';
 
 import { FilterProvider } from '../../store/FilterContext';
 
 function Main({ products, filteredProducts }) {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState(() => ({
     departments: [],
     price: [],
     discount: [],
     rating: []
-  });
+  }));
 
-  const handleFilterChange = (isChecked, { filterCategory, label, products }) => {
+  const handleFilterChange = (isChecked, label, products, filter) => {
     isChecked
-      ? setFilters({ ...filters, [filterCategory]: [...filters[filterCategory], { label, products }] })
+      ? setFilters({ ...filters, [filter]: [...filters[filter], { label, products }] })
       : setFilters(() => {
-        const newFilter = filters[filterCategory].filter(filter => filter.label !== label);
+        const newFilter = filters[filter].filter(filter => filter.label !== label);
 
-        return { ...filters, [filterCategory]: newFilter };
+        return { ...filters, [filter]: newFilter };
       });
   }
 
