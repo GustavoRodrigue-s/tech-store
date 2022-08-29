@@ -12,7 +12,6 @@ import { FilterProvider } from '../../store/FilterContext';
 import "./style.css";
 
 export default function Home() {
-  // const [products, setProducts] = useState(useCatalog());
   const products = useCatalog();
 
   const [filters, setFilters] = useState({
@@ -35,47 +34,34 @@ export default function Home() {
   const returnCurrentProductsToDisplay = () => {
     const { departments, rating, discount, price } = filters;
 
-    const currentFilter = (
-      (departments.length ? departments : null) || 
-      (rating.length ? rating : null) || 
-      (discount.length ? discount : null) ||
-      (price.length ? price : null)
-    );
+    const allFilters = [departments, rating, discount, price];
+
+    const mainFilter = allFilters.find(filter => filter.length ? filter : null);
     
-    if (!currentFilter) {
+    if (!mainFilter) {
       return products
     }
 
-    const currentProducts = currentFilter.reduce((acc, { products }) => acc = [...acc, ...products], []);
+    const currentProducts = mainFilter.reduce((acc, { products }) => acc = [...acc, ...products], []);
 
-    const commonProducts = [
-      ...(currentFilter !== rating ? rating : []), 
-      ...(currentFilter !== discount ? discount : []), 
-      ...(currentFilter !== price ? price : [])
-    ]
-    .reduce((acc, { products }) => acc = [...acc, ...products], []);
+    const commonProducts = [rating, discount, price].map(filter => 
+      filter !== mainFilter 
+        ? filter.reduce((acc, { products }) => acc = [...acc, ...products], []) 
+        : []
+    );
 
-    if (!commonProducts.length) {
+    const hasOthersFilters = commonProducts.find(filter => filter.length);
+    
+    if (!hasOthersFilters) {
       return currentProducts;
     }
 
-    const filteredProducts = currentProducts.filter(({ id }) => {
-      const isCommonProduct = commonProducts.filter(product => product.id === id);
-
-      if (rating.length && discount.length && price.length) {
-        return isCommonProduct.length === 3;
-      }
-
-      if ((discount.length && rating.length) || (price.length && discount.length) || (rating.length && price.length)) {
-        return isCommonProduct.length === 2;
-      }
-
-      if (discount.length || rating.length || price.length) {
-        return isCommonProduct.length === 1;
-      }
-
-      return isCommonProduct
-    });
+    const filteredProducts = currentProducts.filter(({ id }) => 
+      commonProducts.every(products => products.length 
+        ? products.find(product => product.id === id) 
+        : true
+      )
+    );
 
     return filteredProducts
   }
