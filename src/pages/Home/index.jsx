@@ -48,17 +48,19 @@ export default function Home() {
 
     const currentProducts = currentFilter.reduce((acc, { products }) => acc = [...acc, ...products], []);
 
-    const othersProducts = [...rating, ...discount, ...price].reduce((acc, filter) =>
-      acc = [...acc, ...filter.products], []);
+    const commonProducts = [
+      ...(currentFilter !== rating ? rating : []), 
+      ...(currentFilter !== discount ? discount : []), 
+      ...(currentFilter !== price ? price : [])
+    ]
+    .reduce((acc, { products }) => acc = [...acc, ...products], []);
 
-    console.log(othersProducts);
-
-    if (!othersProducts.length) {
+    if (!commonProducts.length) {
       return currentProducts;
     }
 
-    const commonProducts = currentProducts.filter(({ id }) => {
-      const isCommonProduct = othersProducts.filter(product => product.id === id);
+    const filteredProducts = currentProducts.filter(({ id }) => {
+      const isCommonProduct = commonProducts.filter(product => product.id === id);
 
       if (rating.length && discount.length && price.length) {
         return isCommonProduct.length === 3;
@@ -75,7 +77,7 @@ export default function Home() {
       return isCommonProduct
     });
 
-    return commonProducts
+    return filteredProducts
   }
 
   const productsToDisplay = returnCurrentProductsToDisplay();
