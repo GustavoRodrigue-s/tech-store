@@ -8,7 +8,11 @@ function SectionProducts({ products }) {
   const [favoriteProducts, setFavoriteProducts] = useState([]);
 
   const handleFavorite = productId => {
-    setFavoriteProducts(prevProducts => [...prevProducts, productId]);
+    const shouldAddOrRemoveId = favoriteProducts.find(id => id === productId);
+
+    shouldAddOrRemoveId
+      ? setFavoriteProducts(prevProducts => prevProducts.filter(id => id !== productId))
+      : setFavoriteProducts(prevProducts => [...prevProducts, productId]);
   }
 
   const acceptedOrders = {
