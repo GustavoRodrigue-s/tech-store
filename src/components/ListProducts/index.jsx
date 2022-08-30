@@ -4,7 +4,7 @@ import StarRatingList from '../StarRatingList';
 
 import "./style.css";
 
-function ListProducts({ products }) {
+function ListProducts({ products, handleFavorite }) {
   return (
     <ul className="list-products">
       {
@@ -16,7 +16,7 @@ function ListProducts({ products }) {
           return (
             <li key={id} className="product">
               <div className="favorite">
-                <button>
+                <button onClick={() => handleFavorite(id)}>
                   <MdFavoriteBorder size={35} color="#C1C1C1" />
                 </button>
               </div>
