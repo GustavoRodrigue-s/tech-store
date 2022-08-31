@@ -17,7 +17,7 @@ function FilterBar() {
   } = filteredProducts;
 
   const filters = [
-    { name: "Categorias", filter: "departments", subFilters: sortedByDepartments },
+    { name: "Departamentos", filter: "departments", subFilters: sortedByDepartments },
     { name: "Preço", filter: "price", subFilters: sortedByPrices },
     { name: "Descontos", filter: "discount", subFilters: sortedByDiscounts },
     { name: "Avaliação", filter: "rating", subFilters: sortedByStars }
