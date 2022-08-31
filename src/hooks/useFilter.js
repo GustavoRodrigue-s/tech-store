@@ -66,21 +66,6 @@ function useFilter(products) {
     sortedByDiscounts,
     sortedByStars
   }
-
-  /*
-    1 - Pricinpal função é filtrar todos os produtos através dos filtros
-    2 - Deve ser reutilizável
-    3 - Deve ser usuado uma vez só, quando o usuário pesquisar um produto, porque precisamos renderizar a quantidade de produtos de acordo com os filtros
-    4 - Ele filra todos os produtos de aondo com os filtros que possuem regras de negócio (Armazena todas as regras de negócio dos filtros)
-
-    {
-      sortedByDepartments: [
-        { label: "Consoles", products: [{}, {}, {}, {}] }
-        { label: "Notebooks", products: [{}, {}, {}, {}] }
-      ]
-    }
-
-  */ 
 }
 
 export default useFilter;
