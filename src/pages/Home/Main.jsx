@@ -15,14 +15,18 @@ function Main({ products, filteredProducts }) {
 
   const handleFilterChange = (isChecked, label, products, filter) => {
     isChecked
-      ? setFilters({ ...filters, [filter]: [...filters[filter], { label, products }] })
-      : setFilters(() => {
-        const newFilter = filters[filter].filter(filter => filter.label !== label);
-
-        return { ...filters, [filter]: newFilter };
-      });
+    ? setFilters({ ...filters, [filter]: [...filters[filter], { label, products }] })
+    : setFilters(() => {
+      const newFilter = filters[filter].filter(filter => filter.label !== label);
+      
+      return { ...filters, [filter]: newFilter };
+    });
   }
 
+  const getProductsWithId = productIds => {
+    return productIds.map(productId => products.find(({ id }) => id === productId));
+  }
+  
   const getProductsToDisplay = () => {
     const { departments, rating, discount, price } = filters;
 
@@ -45,17 +49,17 @@ function Main({ products, filteredProducts }) {
     const hasOthersFilters = commonProducts.find(filter => filter.length);
     
     if (!hasOthersFilters) {
-      return currentProducts;
+      return getProductsWithId(currentProducts);
     }
 
-    const filteredProducts = currentProducts.filter(({ id }) => 
+    const filteredProducts = currentProducts.filter(id => 
       commonProducts.every(products => products.length 
-        ? products.find(product => product.id === id) 
+        ? products.find(productId => productId === id) 
         : true
       )
     );
 
-    return filteredProducts
+    return getProductsWithId(filteredProducts)
   }
 
   const productsToDisplay = getProductsToDisplay();

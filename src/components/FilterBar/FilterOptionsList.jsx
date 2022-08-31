@@ -5,7 +5,9 @@ function FilterOptionsList({ category, filter, subFilters, handleFilterChange })
     const label = e.target.value;
     const isChecked = e.target.checked;
 
-    handleFilterChange(isChecked, label, products, filter);
+    const productIds = products.map(({ id }) => id);
+
+    handleFilterChange(isChecked, label, productIds, filter);
   }
 
   return (
