@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+      <Header products={products} filteredProducts={filteredProducts} />
       <Main products={products} filteredProducts={filteredProducts} />
     </>
   )

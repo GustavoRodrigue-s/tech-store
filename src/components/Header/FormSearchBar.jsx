@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi'
 
-// import useCatalog from '../../hooks/useCatalog';
-
 export default function FormSearchBar() {
-  // const catalog = useCatalog();
   const [inputValue, setInputValue] = useState('');
-
-  // fazer o filtro de pesquisa
 
   return (
     <form>
