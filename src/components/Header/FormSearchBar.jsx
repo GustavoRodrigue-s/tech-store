@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi'
 
+import Popup from '../Popup';
+
 export default function FormSearchBar() {
   const [inputValue, setInputValue] = useState('');
 
@@ -13,6 +15,11 @@ export default function FormSearchBar() {
           onChange={e => setInputValue(e.target.value)}
           value={inputValue}
         />
+
+        <Popup className="popup-suggestions">
+          Sem sugestões
+        </Popup>
+
         <button>
           <HiOutlineSearch size={30} />
         </button>

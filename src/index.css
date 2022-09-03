@@ -17,6 +17,7 @@
   --colorLine: #DBDBDB;
   --fontLogo: 'Ubuntu', sans-serif;
   --fontColorGray: #787878;
+  --wrapperColor: rgba(0, 0, 0, 0.15);
 }
 
 html {
