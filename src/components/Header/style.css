@@ -39,7 +39,12 @@ header.page-header .container-tools {
 
 /* ---------- SearchBar ---------- */
 
+.form-search-bar {
+  position: relative;
+}
+
 .container-search-bar {
+  z-index: 10;
   width: 300px;
   height: 40px;
   display: flex;
@@ -52,7 +57,7 @@ header.page-header .container-tools {
 }
 
 .container-search-bar > button, .btn-cart {
-  background-color: transparent;
+  background-color: #fff;
 }
 
 .container-search-bar > input {
@@ -96,3 +101,38 @@ header.page-header .container-tools {
 .btn-cart:hover {
   background-color: rgba(0, 0, 0, 5%);
 }
+
+/* --------- Popup Seggestions ---------- */
+
+.container-suggestions {
+  position: absolute;
+  top: 25px;
+  left: -100px;
+}
+
+.popup-suggestions {
+  width: 400px;
+  height: 230px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 10;
+  padding: 10px;
+  border-radius: 10px;
+  /* border: 1px solid var(--colorLine); */
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* .popup-suggestions::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--colorLine);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  background-color: #FFF;
+  transform: rotateZ(45deg);
+} */
