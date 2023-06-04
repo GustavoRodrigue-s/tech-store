@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "prettier",
+    "prettier/react"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
