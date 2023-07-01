@@ -122,6 +122,7 @@ export const products: IProduct[] = [
     id: 12,
     name: 'Monitor led 17.1"\n prizi slim widescreen 16:9, 5ms. 60hz - preto',
     price: 463.33,
+    filledStars: 1,
     discount: 6,
     units: 204,
     parcels: 4,
