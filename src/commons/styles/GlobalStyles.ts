@@ -15,14 +15,18 @@ export const GlobalStyle = createGlobalStyle`
     body {
       width: 100%;
       height: 100vh;
-      font-family: ${theme.font.familyPrimary};
+
+      font-family: ${theme.fonts.primary};
       font-size: ${theme.sizes.normal};
       font-weight: ${theme.weights.normal};
+
+      background-color: ${theme.colors.background};
     }
 
     a,
     button {
       cursor: pointer;
+      text-decoration: none;
     }
 
     button {
