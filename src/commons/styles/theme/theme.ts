@@ -30,9 +30,10 @@ export const theme = {
     headlingSeven: '3.2rem',
 
     big: '2.4rem',
-    medium: '2rem',
+    medium: '1.8rem',
     normal: '1.6rem',
     smaller: '1.4rem',
+    semiSmaller: '1.2rem',
     small: '0.8rem',
   },
   weights: {
@@ -56,4 +57,4 @@ export const theme = {
     primary: 'Open Sans, Arial, sans-serif',
     secondary: 'Ubuntu, Arial, sans-serif',
   },
-};
+} as const;
