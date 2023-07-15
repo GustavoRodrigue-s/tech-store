@@ -11,7 +11,7 @@ const modifiers = {
   `,
   sm: (theme: DefaultTheme) => css`
     padding: 8px 12px;
-    font-size: ${theme.sizes.small};
+    font-size: ${theme.sizes.smaller};
   `,
   isFullWidth: () => css`
     width: 100%;
@@ -34,8 +34,9 @@ export const PrimaryButton = styled.button<PrimaryButtonProps>`
     color: ${theme.colors.white};
 
     transition: background-color 0.3s;
+    font-weight: ${theme.weights.medium};
 
-    :hover {
+    &:hover {
       background-color: ${theme.colors.primaryDark};
     }
 

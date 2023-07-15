@@ -7,10 +7,11 @@ interface StarWrapperProps {
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
 `;
 
 export const StarWrapper = styled.span<StarWrapperProps>`
+  display: flex;
+
   > svg {
     color: ${({ theme, isFilled }) =>
       isFilled ? theme.colors.orange : theme.colors.gray200};

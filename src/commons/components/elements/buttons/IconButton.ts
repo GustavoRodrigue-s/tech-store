@@ -1,7 +1,19 @@
 import styled, { css } from 'styled-components';
 
-export const IconButton = styled.button`
-  ${({ theme }) => css`
+interface IconButtonProps {
+  isWithHover?: boolean;
+}
+
+const modifiers = {
+  hover: () => css`
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.07);
+    }
+  `,
+};
+
+export const IconButton = styled.button<IconButtonProps>`
+  ${({ theme, isWithHover }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,8 +23,6 @@ export const IconButton = styled.button`
 
     transition: 0.3s background-color;
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.07);
-    }
+    ${isWithHover && modifiers.hover()};
   `}
 `;

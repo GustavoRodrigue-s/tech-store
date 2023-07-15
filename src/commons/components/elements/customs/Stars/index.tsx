@@ -1,4 +1,4 @@
-import { AiFillStar } from 'react-icons/ai';
+import { HiStar } from 'react-icons/hi';
 
 import * as S from './styles';
 
@@ -10,7 +10,7 @@ export const Stars: React.FC<StarsProps> = ({ filledStars }) => (
   <S.Container>
     {[1, 2, 3, 4, 5].map(star => (
       <S.StarWrapper key={star} isFilled={filledStars >= star}>
-        <AiFillStar size={20} />
+        <HiStar size={20} />
       </S.StarWrapper>
     ))}
   </S.Container>
