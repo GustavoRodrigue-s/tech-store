@@ -8,6 +8,12 @@ export const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
     }
 
+    #root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
     html {
       font-size: 62.5%;
     }
