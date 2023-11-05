@@ -15,20 +15,33 @@ export const GlobalStyle = createGlobalStyle`
     body {
       width: 100%;
       height: 100vh;
-      font-family: ${theme.font.familyPrimary};
+
+      font-family: ${theme.fonts.primary};
       font-size: ${theme.sizes.normal};
       font-weight: ${theme.weights.normal};
+
+      background-color: ${theme.colors.background};
     }
 
     a,
     button {
       cursor: pointer;
+      text-decoration: none;
     }
 
     button {
       outline: none;
       border: none;
       background-color: transparent;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      background: ${theme.colors.white100};
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
     }
   `}
 `;

@@ -1,0 +1,1 @@
+export { formatFiltersForProducts } from './formatFiltersToProducts';
