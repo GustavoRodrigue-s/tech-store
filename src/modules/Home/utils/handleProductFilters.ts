@@ -56,7 +56,9 @@ export const handleProductFilters = (
     },
   ];
 
-  const sortedByStars = [5, 4, 3, 2, 1].map(star => ({
+  const stars = [1, 2, 3, 4, 5] as (1 | 2 | 3 | 4 | 5)[];
+
+  const sortedByStars = stars.map(star => ({
     label: star,
     products: products.filter(({ filledStars }) => star === (filledStars ?? 0)),
     isStar: true,

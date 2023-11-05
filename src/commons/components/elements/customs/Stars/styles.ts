@@ -14,6 +14,6 @@ export const StarWrapper = styled.span<StarWrapperProps>`
 
   > svg {
     color: ${({ theme, isFilled }) =>
-      isFilled ? theme.colors.orange : theme.colors.gray200};
+      isFilled ? theme.colors.yellow : theme.colors.gray200};
   }
 `;

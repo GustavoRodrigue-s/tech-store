@@ -1,5 +1,5 @@
-import * as Images from '../assets/images/products';
-import { IProduct } from '../types';
+import * as Images from '../../assets/images/products';
+import { IProduct } from '../../types';
 
 export const products: IProduct[] = [
   {

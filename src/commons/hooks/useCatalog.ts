@@ -1,3 +1,3 @@
-import { products } from '../utils';
+import { products } from '../utils/helpers';
 
 export const useCatalog = () => products;

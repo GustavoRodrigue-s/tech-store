@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-constraint */
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
+const baseKey = 'techstore.';
+
 const get = (key: string) => {
-  const item = localStorage.getItem(key);
+  const item = localStorage.getItem(baseKey + key);
   return item ? JSON.parse(item) : null;
 };
 
 const set = <T extends unknown>(key: string, item: T) => {
-  localStorage.setItem(key, JSON.stringify(item));
+  localStorage.setItem(baseKey + key, JSON.stringify(item));
 };
 
 export const useLocalStorage = <T extends unknown>(

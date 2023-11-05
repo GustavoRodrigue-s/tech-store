@@ -18,7 +18,7 @@ const modifiers = {
   `,
 };
 
-interface PrimaryButtonProps {
+export interface PrimaryButtonProps {
   size?: 'lg' | 'md' | 'sm';
   isFullWidth?: boolean;
 }

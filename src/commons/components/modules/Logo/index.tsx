@@ -27,7 +27,7 @@ const Template: React.FC = () => (
 
 export const Logo: React.FC<LogoProps> = ({ isLink }) =>
   isLink ? (
-    <Link to="/">
+    <Link to="/" reloadDocument>
       <Template />
     </Link>
   ) : (

@@ -11,13 +11,15 @@ export interface IFilters {
   rating: ILabel[];
 }
 
+const initialFilters: IFilters = {
+  departments: [],
+  price: [],
+  discount: [],
+  rating: [],
+};
+
 export const useFilters = (products: IProduct[]) => {
-  const [filters, setFilters] = useState<IFilters>({
-    departments: [],
-    price: [],
-    discount: [],
-    rating: [],
-  });
+  const [filters, setFilters] = useState<IFilters>(initialFilters);
 
   const filteredProducts = useMemo(
     () => handleProductFilters(products),
@@ -25,16 +27,20 @@ export const useFilters = (products: IProduct[]) => {
   );
 
   const handleSetFilters = useCallback(
-    (isAdd: boolean, label: ILabel, type: keyof IFilters) => {
-      const add = (oldLabels: ILabel[]) => [...oldLabels, label];
+    (label: ILabel, type: keyof IFilters) => {
+      setFilters(prevFilters => {
+        const labels = prevFilters[type];
+        const isAdd = !labels.includes(label);
 
-      const remove = (oldLabels: ILabel[]) =>
-        oldLabels.filter(currentLabel => currentLabel !== label);
+        const newLabels = isAdd
+          ? [...labels, label]
+          : labels.filter(currentLabel => currentLabel !== label);
 
-      setFilters(filters => ({
-        ...filters,
-        [type]: isAdd ? add(filters[type]) : remove(filters[type]),
-      }));
+        return {
+          ...prevFilters,
+          [type]: newLabels,
+        };
+      });
     },
     []
   );

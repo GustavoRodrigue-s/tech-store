@@ -1,3 +1,4 @@
+import { ToastContainer } from './commons/components/modules';
 import { CartContextProvider } from './commons/contexts/CartContext';
 import { GlobalStyle } from './commons/styles/GlobalStyles';
 import { Theme } from './commons/styles/theme';
@@ -9,5 +10,6 @@ export const App = () => (
     <CartContextProvider>
       <AppRoutes />
     </CartContextProvider>
+    <ToastContainer />
   </Theme>
 );

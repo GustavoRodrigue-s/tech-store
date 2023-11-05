@@ -3,7 +3,7 @@ import { IProduct } from '../../../commons/types';
 export type ILabel = string | number;
 
 interface IsStar {
-  label: number;
+  label: 0 | 1 | 2 | 3 | 4 | 5;
   products: IProduct[];
   isStar: boolean;
 }

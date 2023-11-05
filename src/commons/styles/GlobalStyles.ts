@@ -34,5 +34,14 @@ export const GlobalStyle = createGlobalStyle`
       border: none;
       background-color: transparent;
     }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      background: ${theme.colors.white100};
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
   `}
 `;

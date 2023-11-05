@@ -1,16 +1,15 @@
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
+import { IconButton } from '../../../../../../commons/components/elements/buttons';
 import {
-  IconButton,
-  PrimaryButton,
-} from '../../../../../../commons/components/elements/buttons';
-import { Stars } from '../../../../../../commons/components/elements/customs';
-import { useCartContext } from '../../../../../../commons/contexts/CartContext';
+  Discount,
+  ProductPrice,
+  Stars,
+} from '../../../../../../commons/components/elements/customs';
+import { Ellipsis } from '../../../../../../commons/components/elements/texts';
 import { IProduct } from '../../../../../../commons/types';
-import {
-  priceFormatter,
-  priceWithDiscountFormatter,
-} from '../../../../../../commons/utils/formatters';
+import { priceFormatter } from '../../../../../../commons/utils/formatters';
+import { AddProductButton } from '../../buttons';
 
 import * as S from './styles';
 
@@ -29,66 +28,50 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   filledStars,
   isFavorite,
   onFavorite,
-}) => {
-  const { handleAdd } = useCartContext();
+}) => (
+  <S.Container>
+    <S.FavoriteWrapper isFavorite={isFavorite}>
+      <IconButton
+        title={isFavorite ? 'Desfavoritar produto' : 'Favoritar produto'}
+        onClick={() => onFavorite(id)}
+      >
+        {isFavorite ? <AiFillHeart size={24} /> : <AiOutlineHeart size={24} />}
+      </IconButton>
+    </S.FavoriteWrapper>
 
-  return (
-    <S.Container>
-      <S.FavoriteWrapper isFavorite={isFavorite}>
-        <IconButton
-          title={isFavorite ? 'Desfavoritar produto' : 'Favoritar produto'}
-          onClick={() => onFavorite(id)}
-        >
-          {isFavorite ? (
-            <AiFillHeart size={24} />
-          ) : (
-            <AiOutlineHeart size={24} />
-          )}
-        </IconButton>
-      </S.FavoriteWrapper>
+    <S.ImageWrapper>
+      <img src={image} alt="Imagem do produto" />
+    </S.ImageWrapper>
 
-      <S.ImageWrapper>
-        <img src={image} alt="Imagem do produto" />
-      </S.ImageWrapper>
+    <S.Content>
+      <div>
+        <Ellipsis lines={2} as="strong">
+          {name}
+        </Ellipsis>
+      </div>
+      <div>
+        <small>{units} unidades restantes</small>
+      </div>
+    </S.Content>
 
-      <S.Content>
-        <div>
-          <strong>{name}</strong>
-        </div>
-        <div>
-          <small>{units} unidades restantes</small>
-        </div>
-      </S.Content>
+    <Stars filledStars={filledStars} />
 
-      <Stars filledStars={filledStars ?? 0} />
+    <S.PriceWrapper>
+      <div>
+        {discount && (
+          <small>
+            De <del>{priceFormatter(price)}</del>{' '}
+            <Discount discount={discount} /> por:
+          </small>
+        )}
+      </div>
+      <div>
+        <ProductPrice price={price} discount={discount} />
+      </div>
+    </S.PriceWrapper>
 
-      <S.PriceWrapper>
-        <div>
-          {discount && (
-            <small>
-              De <del>{priceFormatter(price)}</del> <span>(↓{discount}%)</span>{' '}
-              por:
-            </small>
-          )}
-        </div>
-        <div>
-          <strong>
-            {discount
-              ? priceFormatter(priceWithDiscountFormatter(price, discount))
-              : priceFormatter(price)}
-          </strong>
-        </div>
-      </S.PriceWrapper>
-
-      <S.ButtonWrapper>
-        <PrimaryButton
-          onClick={() => handleAdd(id)}
-          style={{ height: '40px' }}
-          isFullWidth
-        >
-          Adicionar Produto
-        </PrimaryButton>
-      </S.ButtonWrapper>
-    </S.Container>
-  );
-};
+    <S.ButtonWrapper>
+      <AddProductButton productId={id} />
+    </S.ButtonWrapper>
+  </S.Container>
+);

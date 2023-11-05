@@ -1,6 +1,6 @@
 import { LayoutWithHeader } from '../../commons/components/layouts';
 import { useCatalog } from '../../commons/hooks';
-import * as M from '../../modules/Home/components/modules';
+import { Products, SideBar } from '../../modules/Home/components/modules';
 import { useFilters } from '../../modules/Home/hooks';
 import * as S from '../../modules/Home/styles';
 
@@ -13,12 +13,12 @@ export const HomePage: React.FC = () => {
     <LayoutWithHeader>
       <S.Container>
         <S.Content>
-          <M.SideBar
+          <SideBar
             filters={filters}
             products={filteredProducts}
             onChange={handleSetFilters}
           />
-          <M.Products
+          <Products
             filters={filters}
             products={products}
             filteredProducts={filteredProducts}

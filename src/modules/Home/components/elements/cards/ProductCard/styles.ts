@@ -1,5 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 
+import { Ellipsis } from '../../../../../../commons/components/elements/texts';
+
 interface FavoriteWrapperProps {
   isFavorite: boolean;
 }
@@ -85,13 +87,7 @@ export const Content = styled.div`
       font-weight: ${theme.weights.medium};
     }
 
-    strong {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-
-      overflow: hidden;
-      text-overflow: ellipsis;
+    ${Ellipsis} {
       height: 44px;
     }
   `}
@@ -102,14 +98,6 @@ export const PriceWrapper = styled.div`
     small {
       font-size: ${theme.sizes.semiSmaller};
       font-weight: ${theme.weights.semiBold};
-    }
-
-    small > span {
-      color: ${theme.colors.green};
-    }
-
-    strong {
-      font-size: ${theme.sizes.medium};
     }
   `}
 `;

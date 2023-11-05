@@ -10,7 +10,7 @@ import * as S from './styles';
 interface SideBarProps {
   filters: IFilters;
   products: IFilteredProducts;
-  onChange: (isAdd: boolean, label: ILabel, type: keyof IFilters) => void;
+  onChange: (label: ILabel, type: keyof IFilters) => void;
 }
 
 export const SideBar: React.FC<SideBarProps> = ({
@@ -20,11 +20,13 @@ export const SideBar: React.FC<SideBarProps> = ({
 }) => {
   const data = useSidebar(products, filters);
 
+  const isChecked = (labels: ILabel[], label: ILabel) => labels.includes(label);
+
   return (
     <S.Container>
       <h2>Filtrar Por</h2>
 
-      {data.map(({ label, filters, value, activeFilters }) => (
+      {data.map(({ label, filters, filter, value, activeFilters }) => (
         <S.Details key={label}>
           <S.Summary>
             {label}
@@ -47,7 +49,8 @@ export const SideBar: React.FC<SideBarProps> = ({
                   <span>
                     <input
                       type="checkbox"
-                      onChange={e => onChange(e.target.checked, label, value)}
+                      checked={isChecked(filter, label)}
+                      onChange={() => onChange(label, value)}
                     />
                     {isStar ? <Stars filledStars={label} /> : label}
                   </span>

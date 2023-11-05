@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { IProduct } from '../../../commons/types';
+import { matchSearch } from '../../../commons/utils/helpers';
 import { IFilteredProducts, ILabel } from '../types';
 import { formatFiltersForProducts } from '../utils/formatters';
 import { IFilters } from './useFilters';
@@ -14,6 +16,8 @@ export const useFormattedProducts = (
   products: IProduct[],
   filteredProducts: IFilteredProducts
 ) => {
+  const [searchParams] = useSearchParams();
+
   const allFilteredProducts = useMemo(
     () => [
       ...filteredProducts.sortedByDepartments,
@@ -52,6 +56,16 @@ export const useFormattedProducts = (
       isCommonProduct(otherFilters, id)
     );
   }, [filters, products, allFilteredProducts]);
+
+  const search = searchParams.get('search');
+
+  if (search) {
+    const matcher = (value: string) => matchSearch(search, value);
+
+    return formattedProducts.filter(({ name, department }) =>
+      [name, department].some(matcher)
+    );
+  }
 
   return formattedProducts;
 };
