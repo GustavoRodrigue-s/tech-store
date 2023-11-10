@@ -20,7 +20,7 @@ const Container = styled.span`
 `;
 
 const Template: React.FC = () => (
-  <Container>
+  <Container className="logo">
     Tech Store<span>.</span>
   </Container>
 );

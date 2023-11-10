@@ -6,6 +6,15 @@ export const Container = styled.div`
       font-weight: ${theme.weights.medium};
     }
 
+    span,
+    select {
+      font-size: ${theme.sizes.smaller};
+
+      @media screen and (min-width: 1280px) {
+        font-size: ${theme.sizes.normal};
+      }
+    }
+
     select {
       border: none;
       background: none;
@@ -13,7 +22,6 @@ export const Container = styled.div`
       height: 40px;
       padding: 0 4px;
 
-      font-size: ${theme.sizes.normal};
       font-weight: ${theme.weights.bold};
       font-family: ${theme.fonts.primary};
     }

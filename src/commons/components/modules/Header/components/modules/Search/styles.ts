@@ -37,6 +37,12 @@ export const Form = styled.form<FormProps>`
 
       ${isShow && modifiers.show(theme)};
     }
+
+    display: none;
+
+    @media screen and (min-width: 500px) {
+      display: block;
+    }
   `}
 `;
 
