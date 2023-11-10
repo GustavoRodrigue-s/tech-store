@@ -2,45 +2,50 @@
 import { useContext, createContext, useCallback, ReactNode } from 'react';
 
 import { useCatalog, useLocalStorage } from '../hooks';
-import { ICart, ICartProduct, IProduct } from '../types';
+import { IBag, IBagProduct, IProduct } from '../types';
 import { priceWithDiscountFormatter } from '../utils/formatters';
 import { toast } from '../utils/helpers';
 
 type ProductId = IProduct['id'];
-type CartProduct = IProduct & ICart;
+type CartProduct = IProduct & IBag;
 
-interface CartContextProps {
-  cart: ICart[];
-  cartProducts: ICartProduct[];
+interface BagContextProps {
+  bag: IBag[];
+  bagProducts: IBagProduct[];
   totalPrice: number;
+  reset: () => void;
   findProduct: (id: ProductId) => CartProduct | undefined;
   handleAdd: (id: ProductId) => void;
-  handleRemove: (id: ProductId) => void;
+  handleRemove: (id: ProductId, isReomve?: boolean) => void;
 }
 
-interface CartContextProviderProps {
+interface BagContextProviderProps {
   children: ReactNode;
 }
 
-const CartContext = createContext({} as CartContextProps);
+const BagContext = createContext({} as BagContextProps);
 
-const CART_KEY = 'cart';
+const BAG_KEY = 'bag';
 
-export const CartContextProvider: React.FC<CartContextProviderProps> = ({
+export const BagContextProvider: React.FC<BagContextProviderProps> = ({
   children,
 }) => {
-  const [cart, setCart] = useLocalStorage<ICart[]>(CART_KEY, []);
+  const [bag, setBag] = useLocalStorage<IBag[]>(BAG_KEY, []);
 
   const products = useCatalog();
 
-  const cartProducts = cart.map(({ id, amount }) => ({
+  const bagProducts = bag.map(({ id, amount }) => ({
     ...products.find(product => product.id === id)!,
     amount,
   }));
 
   const findProduct = (id: ProductId): CartProduct | undefined => {
-    return cartProducts.find(product => product.id === id);
+    return bagProducts.find(product => product.id === id);
   };
+
+  const reset = useCallback(() => {
+    setBag([]);
+  }, [setBag]);
 
   const create = useCallback(
     (id: ProductId) => {
@@ -49,9 +54,9 @@ export const CartContextProvider: React.FC<CartContextProviderProps> = ({
         message: 'Produto adicionado!',
       });
 
-      setCart(prevCart => [...prevCart, { id, amount: 1 }]);
+      setBag(prevCart => [...prevCart, { id, amount: 1 }]);
     },
-    [setCart]
+    [setBag]
   );
 
   const remove = useCallback(
@@ -61,9 +66,9 @@ export const CartContextProvider: React.FC<CartContextProviderProps> = ({
         message: 'Produto removido!',
       });
 
-      setCart(prevCart => prevCart.filter(product => product.id !== id));
+      setBag(prevCart => prevCart.filter(product => product.id !== id));
     },
-    [setCart]
+    [setBag]
   );
 
   const increment = useCallback(
@@ -77,26 +82,26 @@ export const CartContextProvider: React.FC<CartContextProviderProps> = ({
         });
       }
 
-      setCart(prevCart =>
+      setBag(prevCart =>
         prevCart.map(product =>
           product.id === id ? { ...product, amount: currentAmount } : product
         )
       );
     },
-    [setCart]
+    [setBag]
   );
 
   const decrement = useCallback(
     ({ id, amount }: CartProduct) => {
       const currentAmount = amount - 1;
 
-      setCart(prevCart =>
+      setBag(prevCart =>
         prevCart.map(product =>
           product.id === id ? { ...product, amount: currentAmount } : product
         )
       );
     },
-    [setCart]
+    [setBag]
   );
 
   const handleAdd = (id: ProductId) => {
@@ -109,24 +114,24 @@ export const CartContextProvider: React.FC<CartContextProviderProps> = ({
     create(id);
   };
 
-  const handleRemove = (id: ProductId) => {
+  const handleRemove = (id: ProductId, isRemove?: boolean) => {
     const product = findProduct(id);
 
     if (!product) {
       return toast({
         type: 'error',
-        message: 'Esse produto não existe no carrinho!',
+        message: 'Esse produto não existe na sacola!',
       });
     }
 
-    if (product.amount > 1) {
+    if (product.amount > 1 && !isRemove) {
       return decrement(product);
     }
 
     remove(id);
   };
 
-  const totalPrice = cart.reduce((acc, { id, amount }) => {
+  const totalPrice = bag.reduce((acc, { id, amount }) => {
     const { price, discount } = products.find(product => product.id === id)!;
 
     const currentPrice = discount
@@ -137,19 +142,20 @@ export const CartContextProvider: React.FC<CartContextProviderProps> = ({
   }, 0);
 
   return (
-    <CartContext.Provider
+    <BagContext.Provider
       value={{
-        cart,
-        cartProducts,
+        bag,
+        bagProducts,
         totalPrice,
+        reset,
         handleAdd,
         handleRemove,
         findProduct,
       }}
     >
       {children}
-    </CartContext.Provider>
+    </BagContext.Provider>
   );
 };
 
-export const useCartContext = () => useContext(CartContext);
+export const useBagContext = () => useContext(BagContext);

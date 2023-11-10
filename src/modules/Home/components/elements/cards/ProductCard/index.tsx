@@ -3,6 +3,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { IconButton } from '../../../../../../commons/components/elements/buttons';
 import {
   Discount,
+  ProductImage,
   ProductPrice,
   Stars,
 } from '../../../../../../commons/components/elements/customs';
@@ -40,7 +41,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     </S.FavoriteWrapper>
 
     <S.ImageWrapper>
-      <img src={image} alt="Imagem do produto" />
+      <ProductImage src={image} size={170} />
     </S.ImageWrapper>
 
     <S.Content>

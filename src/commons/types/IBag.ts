@@ -1,10 +1,10 @@
 import { IProduct } from './IProduct';
 
-export interface ICart {
+export interface IBag {
   id: IProduct['id'];
   amount: number;
 }
 
-export interface ICartProduct extends IProduct {
+export interface IBagProduct extends IProduct {
   amount: number;
 }

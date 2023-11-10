@@ -1,4 +1,4 @@
-import { useCartContext } from '../../../../../../commons/contexts/CartContext';
+import { useBagContext } from '../../../../../../commons/contexts/BagContext';
 import { IProduct } from '../../../../../../commons/types';
 import { toast } from '../../../../../../commons/utils/helpers';
 
@@ -11,7 +11,7 @@ interface AddProductButtonProps {
 export const AddProductButton: React.FC<AddProductButtonProps> = ({
   productId,
 }) => {
-  const { handleAdd, findProduct } = useCartContext();
+  const { handleAdd, findProduct } = useBagContext();
 
   const product = findProduct(productId);
 
@@ -21,7 +21,7 @@ export const AddProductButton: React.FC<AddProductButtonProps> = ({
     if (isAlreadyAdded) {
       return toast({
         type: 'warning',
-        message: 'Esse produto já foi adicionado no carrinho.',
+        message: 'Esse produto já foi adicionado na sacola.',
       });
     }
 

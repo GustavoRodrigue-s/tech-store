@@ -7,6 +7,8 @@ export const Container = styled.header`
     width: 100%;
     padding: 20px 64px;
 
+    z-index: ${theme.layers.header};
+
     display: flex;
     align-items: center;
     justify-content: space-between;

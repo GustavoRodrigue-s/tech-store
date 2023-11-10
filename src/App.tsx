@@ -1,5 +1,5 @@
 import { ToastContainer } from './commons/components/modules';
-import { CartContextProvider } from './commons/contexts/CartContext';
+import { BagContextProvider } from './commons/contexts/BagContext';
 import { GlobalStyle } from './commons/styles/GlobalStyles';
 import { Theme } from './commons/styles/theme';
 import { AppRoutes } from './routes';
@@ -7,9 +7,9 @@ import { AppRoutes } from './routes';
 export const App = () => (
   <Theme>
     <GlobalStyle />
-    <CartContextProvider>
+    <BagContextProvider>
       <AppRoutes />
-    </CartContextProvider>
+    </BagContextProvider>
     <ToastContainer />
   </Theme>
 );

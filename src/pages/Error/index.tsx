@@ -5,7 +5,7 @@ import { LayoutWithHeader } from '../../commons/components/layouts';
 import { Logo } from '../../commons/components/modules';
 import * as S from '../../modules/Error/styles';
 
-export const Error: React.FC = () => {
+export const ErrorPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (

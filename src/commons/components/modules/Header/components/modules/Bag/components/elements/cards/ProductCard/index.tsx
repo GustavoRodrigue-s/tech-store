@@ -1,18 +1,19 @@
 import { BiPlus, BiMinus, BiTrashAlt } from 'react-icons/bi';
 
-import { useCartContext } from '../../../../../../../../../../contexts/CartContext';
-import { ICartProduct } from '../../../../../../../../../../types';
+import { useBagContext } from '../../../../../../../../../../contexts/BagContext';
+import { IBagProduct } from '../../../../../../../../../../types';
 import {
   priceFormatter,
   priceWithDiscountFormatter,
 } from '../../../../../../../../../../utils/formatters';
 import { IconButton } from '../../../../../../../../../elements/buttons';
+import { ProductImage } from '../../../../../../../../../elements/customs';
 import { Ellipsis } from '../../../../../../../../../elements/texts';
 import { JustifySpaceBetween } from '../../../../../../../../../elements/wrappers';
 
 import * as S from './styles';
 
-type ProductCardProps = ICartProduct;
+type ProductCardProps = IBagProduct;
 
 const ICON_SIZE = 14;
 
@@ -25,11 +26,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   price,
   discount,
 }) => {
-  const { handleAdd, handleRemove } = useCartContext();
+  const { handleAdd, handleRemove } = useBagContext();
 
   return (
     <S.Container>
-      <img src={image} alt="Imagem do produto" />
+      <ProductImage src={image} size={46} />
       <div>
         <Ellipsis lines={2} as="strong">
           {name}

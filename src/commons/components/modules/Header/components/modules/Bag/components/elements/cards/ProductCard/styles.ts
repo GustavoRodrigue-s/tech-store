@@ -11,11 +11,6 @@ export const Container = styled.div`
 
     padding-right: 8px;
 
-    img {
-      width: 100%;
-      max-width: 46px;
-    }
-
     small {
       color: ${theme.colors.gray};
     }

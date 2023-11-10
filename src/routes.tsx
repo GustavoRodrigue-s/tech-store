@@ -6,7 +6,8 @@ export const AppRoutes: React.FC = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<P.HomePage />} />
-      <Route path="*" element={<P.Error />} />
+      <Route path="/checkout" element={<P.CheckoutPage />} />
+      <Route path="*" element={<P.ErrorPage />} />
     </Routes>
   </BrowserRouter>
 );

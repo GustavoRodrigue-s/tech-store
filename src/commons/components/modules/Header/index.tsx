@@ -1,5 +1,5 @@
 import { Logo } from '../Logo';
-import { Cart, Search } from './components/modules';
+import { Bag, Search } from './components/modules';
 
 import * as S from './styles';
 
@@ -8,7 +8,7 @@ export const Header: React.FC = () => (
     <Logo isLink />
     <div>
       <Search />
-      <Cart />
+      <Bag />
     </div>
   </S.Container>
 );
