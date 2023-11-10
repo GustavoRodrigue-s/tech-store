@@ -6,19 +6,31 @@ import { Input } from '../../../../../commons/components/elements/forms';
 export const Container = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    max-width: 500px;
-    height: 100vh;
 
-    position: sticky;
-    top: 0;
+    order: -1;
 
-    background-color: ${theme.colors.white};
+    background-color: transparent;
 
-    padding: 72px 32px 32px;
+    padding: 32px 0 0;
 
     h2,
     h3 {
       font-weight: ${theme.weights.bold};
+    }
+
+    @media screen and (min-width: 1060px) {
+      max-width: 400px;
+      padding: 72px 32px 32px;
+
+      position: sticky;
+      top: 0;
+      order: 0;
+      height: 100vh;
+
+      background-color: ${theme.colors.white};
+    }
+    @media screen and (min-width: 1280px) {
+      max-width: 500px;
     }
   `}
 `;
@@ -64,7 +76,11 @@ export const CouponWrapper = styled.div`
 
       ${PrimaryButton} {
         background-color: ${theme.colors.gray};
-        padding: 0 32px;
+        padding: 0 16px;
+
+        @media screen and (min-width: 1280px) {
+          padding: 0 32px;
+        }
       }
 
       ${Input}, ${PrimaryButton} {

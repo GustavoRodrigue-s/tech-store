@@ -2,11 +2,6 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.aside`
   ${({ theme }) => css`
-    flex: 0 0 300px;
-
-    position: sticky;
-    top: 48px;
-
     h2,
     ${Summary} {
       padding: 16px 0;
@@ -22,6 +17,14 @@ export const Container = styled.aside`
 
     ${Li} {
       font-weight: ${theme.weights.normal};
+    }
+
+    width: 100%;
+
+    @media screen and (min-width: 860px) {
+      flex: 0 0 300px;
+      position: sticky;
+      top: 48px;
     }
   `}
 `;

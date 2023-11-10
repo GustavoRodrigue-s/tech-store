@@ -23,8 +23,8 @@ export const Content = styled.main`
 
     text-align: center;
 
-    span {
-      font-size: ${theme.sizes.headlingOne};
+    .logo {
+      font-size: min(${theme.sizes.headlingOne}, 15vw);
     }
 
     p {

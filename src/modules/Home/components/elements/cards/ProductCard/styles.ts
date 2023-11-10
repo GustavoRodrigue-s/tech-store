@@ -24,7 +24,7 @@ export const Container = styled.div`
 
     position: relative;
     padding: 8px;
-    height: 340px;
+    height: 320px;
 
     display: flex;
     flex-direction: column;
@@ -48,6 +48,10 @@ export const Container = styled.div`
       ${ShowOnHoverWrapper} {
         display: block;
       }
+    }
+
+    @media screen and (min-width: 1024px) {
+      height: 340px;
     }
   `}
 `;
@@ -73,7 +77,16 @@ export const ImageWrapper = styled.div`
   justify-content: center;
 
   img {
-    margin: 0 auto;
+    margin: 16px auto;
+    max-width: 120px;
+
+    @media screen and (min-width: 1024px) {
+      max-width: 140px;
+    }
+    @media screen and (min-width: 1400px) {
+      margin: 0 auto;
+      max-width: 170px;
+    }
   }
 `;
 

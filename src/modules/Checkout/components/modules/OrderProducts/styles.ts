@@ -1,14 +1,21 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  padding: 72px 0 128px;
+  padding: 72px 0 36px;
   max-width: 900px;
   width: 100%;
+  overflow: auto;
+
+  @media screen and (min-width: 1060px) {
+    padding: 72px 0 128px;
+  }
 `;
 
 export const Table = styled.table`
   border-spacing: 0 16px;
   width: 100%;
+
+  min-width: 600px;
 `;
 
 export const Thead = styled.thead`
@@ -69,6 +76,14 @@ export const Tbody = styled.tbody`
       strong {
         font-size: ${theme.sizes.smaller};
         font-weight: ${theme.weights.semiBold};
+      }
+
+      img {
+        max-width: 56px;
+
+        @media screen and (min-width: 1280px) {
+          max-width: 86px;
+        }
       }
     }
 
