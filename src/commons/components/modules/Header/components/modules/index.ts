@@ -1,2 +1,2 @@
-export { Cart } from './Cart';
+export { Bag } from './Bag';
 export { Search } from './Search';

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { IconButton } from '../../../../../elements/buttons';
 import { Strong } from '../../elements/texts';
 
-export const CartButton = styled(IconButton)`
+export const BagButton = styled(IconButton)`
   ${({ theme }) => css`
     position: relative;
 

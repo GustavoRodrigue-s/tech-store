@@ -73,8 +73,6 @@ export const ImageWrapper = styled.div`
   justify-content: center;
 
   img {
-    width: 100%;
-    max-width: 170px;
     margin: 0 auto;
   }
 `;

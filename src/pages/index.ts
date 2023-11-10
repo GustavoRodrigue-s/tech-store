@@ -1,2 +1,3 @@
 export { HomePage } from './Home';
-export { Error } from './Error';
+export { ErrorPage } from './Error';
+export { CheckoutPage } from './Checkout';

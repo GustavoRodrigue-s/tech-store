@@ -1,34 +1,34 @@
 import { BsBag } from 'react-icons/bs';
 
-import { useCartContext } from '../../../../../../contexts/CartContext';
+import { useBagContext } from '../../../../../../contexts/BagContext';
 import { Popover } from '../../../../Popover';
 import { Empty } from '../../elements/customs';
-import { CartProducts } from './components/modules';
+import { BagProducts } from './components/modules';
 
 import * as S from './styles';
 
 const iconSize = 24;
 
-export const Cart: React.FC = () => {
-  const { cart, cartProducts, totalPrice } = useCartContext();
+export const Bag: React.FC = () => {
+  const { bag, bagProducts, totalPrice } = useBagContext();
 
-  const amount = cart.reduce((acc, { amount }) => (acc += amount), 0);
+  const amount = bag.reduce((acc, { amount }) => (acc += amount), 0);
 
   return (
     <Popover.Root>
       <Popover.Target>
-        <S.CartButton isWithHover>
+        <S.BagButton isWithHover>
           <BsBag size={iconSize} />
           <S.Amount>{amount}</S.Amount>
-        </S.CartButton>
+        </S.BagButton>
       </Popover.Target>
 
       <Popover.Content width={300}>
         <S.Content>
           {amount === 0 ? (
-            <Empty>Seu carrinho está vazio!</Empty>
+            <Empty>Sua sacola está vazia!</Empty>
           ) : (
-            <CartProducts price={totalPrice} products={cartProducts} />
+            <BagProducts price={totalPrice} products={bagProducts} />
           )}
         </S.Content>
       </Popover.Content>

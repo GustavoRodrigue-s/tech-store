@@ -61,6 +61,7 @@ export const theme = {
     full: 99999,
     popover: 10,
     overlay: 5,
+    header: 1,
   },
   fonts: {
     primary: 'Open Sans, Arial, sans-serif',

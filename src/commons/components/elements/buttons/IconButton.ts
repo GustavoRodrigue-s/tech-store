@@ -6,8 +6,11 @@ interface IconButtonProps {
 
 const modifiers = {
   hover: () => css`
-    &:hover {
+    &:hover:not(&:disabled) {
       background-color: rgba(0, 0, 0, 0.07);
+    }
+    &:hover:disabled {
+      cursor: not-allowed;
     }
   `,
 };
