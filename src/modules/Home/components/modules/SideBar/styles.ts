@@ -44,6 +44,11 @@ export const Summary = styled.summary`
     user-select: none;
     cursor: pointer;
     border-top: 1px solid ${theme.colors.gray200};
+    -webkit-user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
   `}
 `;
 
